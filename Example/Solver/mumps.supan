@@ -1,0 +1,26 @@
+# A TEST MODEL FOR BILINEAR1D MATERIAL
+
+node 1 0 0
+node 2 4 0
+
+material Bilinear1D 1 100 5 .2
+
+element T2D2 1 1 2 1 10
+
+fix2 1 1 1
+fix2 2 2 1 2
+
+cload 1 0 100 1 2
+
+step static 1
+set ini_step_size 1.
+set fixed_step_size 1
+set sparse_mat 1
+
+analyze
+
+peek node 2
+
+reset
+clear
+exit

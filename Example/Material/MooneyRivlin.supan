@@ -1,0 +1,39 @@
+# A TEST MODEL FOR MOONEYRIVLIN MATERIAL
+
+node 1 0 0 0
+node 2 1 0 0
+node 3 1 1 0
+node 4 0 1 0
+node 5 0 0 1
+node 6 1 0 1
+node 7 1 1 1
+node 8 0 1 1
+
+material MooneyRivlin 1 1E7 80 20
+# material Elastic3D 1 1E3 .2
+
+element C3D8 1 1 2 3 4 5 6 7 8 1 G 1
+
+fix2 1 1 1 4 5 8
+fix2 2 2 1 2 5 6
+fix2 3 3 1 2 3 4
+
+displacement 1 0 5 1 2 3
+displacement 2 0 4 1 6 7
+
+step static 1
+set fixed_step_size 1
+set ini_step_size 2E-2
+set symm_mat 0
+
+converger AbsIncreDisp 1 1E-10 50 1
+
+analyze
+
+peek element 1
+
+peek node 3
+
+reset
+clear
+exit

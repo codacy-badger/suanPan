@@ -1,0 +1,320 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release-GPU|x64">
+      <Configuration>Release-GPU</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release-MKL|x64">
+      <Configuration>Release-MKL</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{DFE098B0-CE36-42BC-AB34-3C7146543F57}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>suanPan</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-MKL|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseIntelMKL>Parallel</UseIntelMKL>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-GPU|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseIntelMKL>Parallel</UseIntelMKL>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release-MKL|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release-GPU|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>../../$(Configuration)/</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>../../$(Configuration)/</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-MKL|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>../../$(Configuration)/</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-GPU|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>../../$(Configuration)/</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>SUANPAN_HDF5;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../../..;../../../Include;../../../Include/armadillo;../../../Include/mumps;../../../Include/hdf5-vs;../../../Include/hdf5-common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OpenMPSupport>false</OpenMPSupport>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MinimalRebuild>false</MinimalRebuild>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <LanguageStandard>stdcpp14</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <AdditionalLibraryDirectories>../../../Libs/vs/;../../../Libs/gcc-win/;../../$(Configuration)/Libs/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Solver.lib;Section.lib;Element.lib;Converger.lib;Material.lib;superlu.lib;libamd.lib;libspmm.lib;libarpack.lib;libmumpsd.lib;libopenblas.lib;hdf5_hl.lib;hdf5.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>/NODEFAULTLIB:LIBCMT /NODEFAULTLIB:MSVCRT %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>Full</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>SUANPAN_MT;SUANPAN_HDF5;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../../..;../../../Include;../../../Include/armadillo;../../../Include/mumps;../../../Include/hdf5-vs;../../../Include/hdf5-common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
+      <OpenMPSupport>false</OpenMPSupport>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <LanguageStandard>stdcpp14</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>../../../Libs/vs/;../../../Libs/gcc-win/;../../$(Configuration)/Libs/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Solver.lib;Section.lib;Element.lib;Converger.lib;Material.lib;superlu.lib;libamd.lib;libarpack.lib;libspmm.lib;libmumpsd.lib;libopenblas.lib;hdf5_hl.lib;hdf5.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>/NODEFAULTLIB:MSVCRT %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release-MKL|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>Full</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>MKL_DIRECT_CALL;SUANPAN_MT;SUANPAN_HDF5;SUANPAN_VTK;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../../..;../../../Include;../../../Include/armadillo;../../../Include/mumps;../../../Include/hdf5-vs;../../../Include/hdf5-common;C:\Program Files\VTK\include\vtk-8.1;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
+      <OpenMPSupport>false</OpenMPSupport>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <LanguageStandard>stdcpp14</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>../../../Libs/vs/;../../../Libs/gcc-win/;../../$(Configuration)/Libs/;C:\Program Files\VTK\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Solver.lib;Section.lib;Element.lib;Converger.lib;Material.lib;hdf5_hl.lib;hdf5.lib;amd.lib;arpack.lib;spmm.lib;superlu.lib;libmumpsd.lib;vtkalglib-8.1.lib;vtkChartsCore-8.1.lib;vtkCommonColor-8.1.lib;vtkCommonComputationalGeometry-8.1.lib;vtkCommonCore-8.1.lib;vtkCommonDataModel-8.1.lib;vtkCommonExecutionModel-8.1.lib;vtkCommonMath-8.1.lib;vtkCommonMisc-8.1.lib;vtkCommonSystem-8.1.lib;vtkCommonTransforms-8.1.lib;vtkDICOMParser-8.1.lib;vtkDomainsChemistry-8.1.lib;vtkDomainsChemistryOpenGL2-8.1.lib;vtkexoIIc-8.1.lib;vtkexpat-8.1.lib;vtkFiltersAMR-8.1.lib;vtkFiltersCore-8.1.lib;vtkFiltersExtraction-8.1.lib;vtkFiltersFlowPaths-8.1.lib;vtkFiltersGeneral-8.1.lib;vtkFiltersGeneric-8.1.lib;vtkFiltersGeometry-8.1.lib;vtkFiltersHybrid-8.1.lib;vtkFiltersHyperTree-8.1.lib;vtkFiltersImaging-8.1.lib;vtkFiltersModeling-8.1.lib;vtkFiltersParallel-8.1.lib;vtkFiltersParallelImaging-8.1.lib;vtkFiltersPoints-8.1.lib;vtkFiltersProgrammable-8.1.lib;vtkFiltersSelection-8.1.lib;vtkFiltersSMP-8.1.lib;vtkFiltersSources-8.1.lib;vtkFiltersStatistics-8.1.lib;vtkFiltersTexture-8.1.lib;vtkFiltersTopology-8.1.lib;vtkFiltersVerdict-8.1.lib;vtkfreetype-8.1.lib;vtkGeovisCore-8.1.lib;vtkgl2ps-8.1.lib;vtkglew-8.1.lib;vtkhdf5_hl-8.1.lib;vtkhdf5-8.1.lib;vtkImagingColor-8.1.lib;vtkImagingCore-8.1.lib;vtkImagingFourier-8.1.lib;vtkImagingGeneral-8.1.lib;vtkImagingHybrid-8.1.lib;vtkImagingMath-8.1.lib;vtkImagingMorphological-8.1.lib;vtkImagingSources-8.1.lib;vtkImagingStatistics-8.1.lib;vtkImagingStencil-8.1.lib;vtkInfovisCore-8.1.lib;vtkInfovisLayout-8.1.lib;vtkInteractionImage-8.1.lib;vtkInteractionStyle-8.1.lib;vtkInteractionWidgets-8.1.lib;vtkIOAMR-8.1.lib;vtkIOCore-8.1.lib;vtkIOEnSight-8.1.lib;vtkIOExodus-8.1.lib;vtkIOExport-8.1.lib;vtkIOExportOpenGL2-8.1.lib;vtkIOGeometry-8.1.lib;vtkIOImage-8.1.lib;vtkIOImport-8.1.lib;vtkIOInfovis-8.1.lib;vtkIOLegacy-8.1.lib;vtkIOLSDyna-8.1.lib;vtkIOMINC-8.1.lib;vtkIOMovie-8.1.lib;vtkIONetCDF-8.1.lib;vtkIOParallel-8.1.lib;vtkIOParallelXML-8.1.lib;vtkIOPLY-8.1.lib;vtkIOSQL-8.1.lib;vtkIOTecplotTable-8.1.lib;vtkIOVideo-8.1.lib;vtkIOXML-8.1.lib;vtkIOXMLParser-8.1.lib;vtkjpeg-8.1.lib;vtkjsoncpp-8.1.lib;vtklibharu-8.1.lib;vtklibxml2-8.1.lib;vtklz4-8.1.lib;vtkmetaio-8.1.lib;vtkNetCDF-8.1.lib;vtknetcdfcpp-8.1.lib;vtkoggtheora-8.1.lib;vtkParallelCore-8.1.lib;vtkpng-8.1.lib;vtkproj4-8.1.lib;vtkRenderingAnnotation-8.1.lib;vtkRenderingContext2D-8.1.lib;vtkRenderingContextOpenGL2-8.1.lib;vtkRenderingCore-8.1.lib;vtkRenderingFreeType-8.1.lib;vtkRenderingGL2PSOpenGL2-8.1.lib;vtkRenderingImage-8.1.lib;vtkRenderingLabel-8.1.lib;vtkRenderingLOD-8.1.lib;vtkRenderingOpenGL2-8.1.lib;vtkRenderingVolume-8.1.lib;vtkRenderingVolumeOpenGL2-8.1.lib;vtksqlite-8.1.lib;vtksys-8.1.lib;vtktiff-8.1.lib;vtkverdict-8.1.lib;vtkViewsContext2D-8.1.lib;vtkViewsCore-8.1.lib;vtkViewsInfovis-8.1.lib;vtkzlib-8.1.lib;vfw32.lib;opengl32.lib;glu32.lib;comctl32.lib;wsock32.lib;ws2_32.lib;Psapi.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>/NODEFAULTLIB:MSVCRT %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release-GPU|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>Full</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>MKL_DIRECT_CALL;SUANPAN_VTK;SUANPAN_MT;SUANPAN_HDF5;SUANPAN_MAGMA;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(CUDA_PATH)/include;../../..;../../../Include;../../../Include/armadillo;../../../Include/hdf5-vs;../../../Include/hdf5-common;C:\Program Files\VTK\include\vtk-8.1;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
+      <OpenMPSupport>false</OpenMPSupport>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <LanguageStandard>stdcpp14</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>../../../Libs/vs/;../../$(Configuration)/Libs/;$(CUDA_PATH)\lib\x64\;C:\Program Files\VTK\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Solver.lib;Section.lib;Element.lib;Converger.lib;Material.lib;magma.lib;magma_sparse.lib;amd.lib;arpack.lib;spmm.lib;hdf5_hl.lib;hdf5.lib;cublas.lib;cudart.lib;cudart_static.lib;cusparse.lib;vtkalglib-8.1.lib;vtkChartsCore-8.1.lib;vtkCommonColor-8.1.lib;vtkCommonComputationalGeometry-8.1.lib;vtkCommonCore-8.1.lib;vtkCommonDataModel-8.1.lib;vtkCommonExecutionModel-8.1.lib;vtkCommonMath-8.1.lib;vtkCommonMisc-8.1.lib;vtkCommonSystem-8.1.lib;vtkCommonTransforms-8.1.lib;vtkDICOMParser-8.1.lib;vtkDomainsChemistry-8.1.lib;vtkDomainsChemistryOpenGL2-8.1.lib;vtkexoIIc-8.1.lib;vtkexpat-8.1.lib;vtkFiltersAMR-8.1.lib;vtkFiltersCore-8.1.lib;vtkFiltersExtraction-8.1.lib;vtkFiltersFlowPaths-8.1.lib;vtkFiltersGeneral-8.1.lib;vtkFiltersGeneric-8.1.lib;vtkFiltersGeometry-8.1.lib;vtkFiltersHybrid-8.1.lib;vtkFiltersHyperTree-8.1.lib;vtkFiltersImaging-8.1.lib;vtkFiltersModeling-8.1.lib;vtkFiltersParallel-8.1.lib;vtkFiltersParallelImaging-8.1.lib;vtkFiltersPoints-8.1.lib;vtkFiltersProgrammable-8.1.lib;vtkFiltersSelection-8.1.lib;vtkFiltersSMP-8.1.lib;vtkFiltersSources-8.1.lib;vtkFiltersStatistics-8.1.lib;vtkFiltersTexture-8.1.lib;vtkFiltersTopology-8.1.lib;vtkFiltersVerdict-8.1.lib;vtkfreetype-8.1.lib;vtkGeovisCore-8.1.lib;vtkgl2ps-8.1.lib;vtkglew-8.1.lib;vtkhdf5_hl-8.1.lib;vtkhdf5-8.1.lib;vtkImagingColor-8.1.lib;vtkImagingCore-8.1.lib;vtkImagingFourier-8.1.lib;vtkImagingGeneral-8.1.lib;vtkImagingHybrid-8.1.lib;vtkImagingMath-8.1.lib;vtkImagingMorphological-8.1.lib;vtkImagingSources-8.1.lib;vtkImagingStatistics-8.1.lib;vtkImagingStencil-8.1.lib;vtkInfovisCore-8.1.lib;vtkInfovisLayout-8.1.lib;vtkInteractionImage-8.1.lib;vtkInteractionStyle-8.1.lib;vtkInteractionWidgets-8.1.lib;vtkIOAMR-8.1.lib;vtkIOCore-8.1.lib;vtkIOEnSight-8.1.lib;vtkIOExodus-8.1.lib;vtkIOExport-8.1.lib;vtkIOExportOpenGL2-8.1.lib;vtkIOGeometry-8.1.lib;vtkIOImage-8.1.lib;vtkIOImport-8.1.lib;vtkIOInfovis-8.1.lib;vtkIOLegacy-8.1.lib;vtkIOLSDyna-8.1.lib;vtkIOMINC-8.1.lib;vtkIOMovie-8.1.lib;vtkIONetCDF-8.1.lib;vtkIOParallel-8.1.lib;vtkIOParallelXML-8.1.lib;vtkIOPLY-8.1.lib;vtkIOSQL-8.1.lib;vtkIOTecplotTable-8.1.lib;vtkIOVideo-8.1.lib;vtkIOXML-8.1.lib;vtkIOXMLParser-8.1.lib;vtkjpeg-8.1.lib;vtkjsoncpp-8.1.lib;vtklibharu-8.1.lib;vtklibxml2-8.1.lib;vtklz4-8.1.lib;vtkmetaio-8.1.lib;vtkNetCDF-8.1.lib;vtknetcdfcpp-8.1.lib;vtkoggtheora-8.1.lib;vtkParallelCore-8.1.lib;vtkpng-8.1.lib;vtkproj4-8.1.lib;vtkRenderingAnnotation-8.1.lib;vtkRenderingContext2D-8.1.lib;vtkRenderingContextOpenGL2-8.1.lib;vtkRenderingCore-8.1.lib;vtkRenderingFreeType-8.1.lib;vtkRenderingGL2PSOpenGL2-8.1.lib;vtkRenderingImage-8.1.lib;vtkRenderingLabel-8.1.lib;vtkRenderingLOD-8.1.lib;vtkRenderingOpenGL2-8.1.lib;vtkRenderingVolume-8.1.lib;vtkRenderingVolumeOpenGL2-8.1.lib;vtksqlite-8.1.lib;vtksys-8.1.lib;vtktiff-8.1.lib;vtkverdict-8.1.lib;vtkViewsContext2D-8.1.lib;vtkViewsCore-8.1.lib;vtkViewsInfovis-8.1.lib;vtkzlib-8.1.lib;vfw32.lib;opengl32.lib;glu32.lib;comctl32.lib;wsock32.lib;ws2_32.lib;Psapi.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>/NODEFAULTLIB:MSVCRT %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\Constraint\BC\BC.cpp" />
+    <ClCompile Include="..\..\..\Constraint\BC\BC2.cpp" />
+    <ClCompile Include="..\..\..\Constraint\Constraint.cpp" />
+    <ClCompile Include="..\..\..\Constraint\Criterion\Criterion.cpp" />
+    <ClCompile Include="..\..\..\Constraint\Criterion\MaxDisplacement.cpp" />
+    <ClCompile Include="..\..\..\Constraint\Criterion\MinDisplacement.cpp" />
+    <ClCompile Include="..\..\..\Constraint\MPC.cpp" />
+    <ClCompile Include="..\..\..\Database\Database.cpp" />
+    <ClCompile Include="..\..\..\Database\HDF.cpp" />
+    <ClCompile Include="..\..\..\Database\SQL.cpp" />
+    <ClCompile Include="..\..\..\Domain\Domain.cpp" />
+    <ClCompile Include="..\..\..\Domain\DomainBase.cpp" />
+    <ClCompile Include="..\..\..\Domain\ExternalModule.cpp" />
+    <ClCompile Include="..\..\..\Domain\Node.cpp" />
+    <ClCompile Include="..\..\..\Domain\Tag.cpp" />
+    <ClCompile Include="..\..\..\Load\Acceleration.cpp" />
+    <ClCompile Include="..\..\..\Load\Amplitude\Amplitude.cpp" />
+    <ClCompile Include="..\..\..\Load\Amplitude\Combine.cpp" />
+    <ClCompile Include="..\..\..\Load\Amplitude\Constant.cpp" />
+    <ClCompile Include="..\..\..\Load\Amplitude\Cosine.cpp" />
+    <ClCompile Include="..\..\..\Load\Amplitude\Decay.cpp" />
+    <ClCompile Include="..\..\..\Load\Amplitude\Linear.cpp" />
+    <ClCompile Include="..\..\..\Load\Amplitude\Modulated.cpp" />
+    <ClCompile Include="..\..\..\Load\Amplitude\Ramp.cpp" />
+    <ClCompile Include="..\..\..\Load\Amplitude\Sine.cpp" />
+    <ClCompile Include="..\..\..\Load\Amplitude\Tabular.cpp" />
+    <ClCompile Include="..\..\..\Load\NodalLoad.cpp" />
+    <ClCompile Include="..\..\..\Load\NodalDisplacement.cpp" />
+    <ClCompile Include="..\..\..\Load\Load.cpp" />
+    <ClCompile Include="..\..\..\Recorder\EigenRecorder.cpp" />
+    <ClCompile Include="..\..\..\Recorder\ElementRecorder.cpp" />
+    <ClCompile Include="..\..\..\Recorder\FrameRecorder.cpp" />
+    <ClCompile Include="..\..\..\Recorder\NodeRecorder.cpp" />
+    <ClCompile Include="..\..\..\Recorder\OutputType.cpp" />
+    <ClCompile Include="..\..\..\Recorder\Recorder.cpp" />
+    <ClCompile Include="..\..\..\Step\ArcLength.cpp" />
+    <ClCompile Include="..\..\..\Step\Bead.cpp" />
+    <ClCompile Include="..\..\..\Step\Buckle.cpp" />
+    <ClCompile Include="..\..\..\Step\Dynamic.cpp" />
+    <ClCompile Include="..\..\..\Step\Frequency.cpp" />
+    <ClCompile Include="..\..\..\Step\Static.cpp" />
+    <ClCompile Include="..\..\..\Step\Step.cpp" />
+    <ClCompile Include="..\..\..\suanPan.cpp" />
+    <ClCompile Include="..\..\..\Toolbox\argumentParser.cpp" />
+    <ClCompile Include="..\..\..\Toolbox\arpack_wrapper.cpp" />
+    <ClCompile Include="..\..\..\Toolbox\commandParser.cpp" />
+    <ClCompile Include="..\..\..\Toolbox\debug.cpp" />
+    <ClCompile Include="..\..\..\Toolbox\IntegrationPlan.cpp" />
+    <ClCompile Include="..\..\..\Toolbox\sort_rcm.cpp" />
+    <ClCompile Include="..\..\..\Toolbox\tensorToolbox.cpp" />
+    <ClCompile Include="..\..\..\Toolbox\utility.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\Constraint\BC\BC.h" />
+    <ClInclude Include="..\..\..\Constraint\BC\BC2.h" />
+    <ClInclude Include="..\..\..\Constraint\Constraint.h" />
+    <ClInclude Include="..\..\..\Constraint\Criterion\Criterion.h" />
+    <ClInclude Include="..\..\..\Constraint\Criterion\MaxDisplacement.h" />
+    <ClInclude Include="..\..\..\Constraint\Criterion\MinDisplacement.h" />
+    <ClInclude Include="..\..\..\Constraint\MPC.h" />
+    <ClInclude Include="..\..\..\Database\Database.h" />
+    <ClInclude Include="..\..\..\Database\HDF.h" />
+    <ClInclude Include="..\..\..\Database\SQL.h" />
+    <ClInclude Include="..\..\..\Domain\Domain.h" />
+    <ClInclude Include="..\..\..\Domain\DomainBase.h" />
+    <ClInclude Include="..\..\..\Domain\ExternalModule.h" />
+    <ClInclude Include="..\..\..\Domain\Factory.hpp" />
+    <ClInclude Include="..\..\..\Domain\MetaMat\BandMat.hpp" />
+    <ClInclude Include="..\..\..\Domain\MetaMat\BandSymmMat.hpp" />
+    <ClInclude Include="..\..\..\Domain\MetaMat\comparator.hpp" />
+    <ClInclude Include="..\..\..\Domain\MetaMat\csc_form.hpp" />
+    <ClInclude Include="..\..\..\Domain\MetaMat\csr_form.hpp" />
+    <ClInclude Include="..\..\..\Domain\MetaMat\FullMat.hpp" />
+    <ClInclude Include="..\..\..\Domain\MetaMat\MetaMat.hpp" />
+    <ClInclude Include="..\..\..\Domain\MetaMat\operator_times.hpp" />
+    <ClInclude Include="..\..\..\Domain\MetaMat\SparseMat.hpp" />
+    <ClInclude Include="..\..\..\Domain\MetaMat\sparse_form.hpp" />
+    <ClInclude Include="..\..\..\Domain\MetaMat\SymmPackMat.hpp" />
+    <ClInclude Include="..\..\..\Domain\MetaMat\triplet_form.hpp" />
+    <ClInclude Include="..\..\..\Domain\Node.h" />
+    <ClInclude Include="..\..\..\Domain\Tag.h" />
+    <ClInclude Include="..\..\..\Load\Acceleration.h" />
+    <ClInclude Include="..\..\..\Load\Amplitude\Amplitude.h" />
+    <ClInclude Include="..\..\..\Load\Amplitude\Combine.h" />
+    <ClInclude Include="..\..\..\Load\Amplitude\Constant.h" />
+    <ClInclude Include="..\..\..\Load\Amplitude\Cosine.h" />
+    <ClInclude Include="..\..\..\Load\Amplitude\Decay.h" />
+    <ClInclude Include="..\..\..\Load\Amplitude\Linear.h" />
+    <ClInclude Include="..\..\..\Load\Amplitude\Modulated.h" />
+    <ClInclude Include="..\..\..\Load\Amplitude\Ramp.h" />
+    <ClInclude Include="..\..\..\Load\Amplitude\Sine.h" />
+    <ClInclude Include="..\..\..\Load\Amplitude\Tabular.h" />
+    <ClInclude Include="..\..\..\Load\NodalLoad.h" />
+    <ClInclude Include="..\..\..\Load\NodalDisplacement.h" />
+    <ClInclude Include="..\..\..\Load\Load.h" />
+    <ClInclude Include="..\..\..\Recorder\EigenRecorder.h" />
+    <ClInclude Include="..\..\..\Recorder\ElementRecorder.h" />
+    <ClInclude Include="..\..\..\Recorder\FrameRecorder.h" />
+    <ClInclude Include="..\..\..\Recorder\NodeRecorder.h" />
+    <ClInclude Include="..\..\..\Recorder\OutputType.h" />
+    <ClInclude Include="..\..\..\Recorder\Recorder.h" />
+    <ClInclude Include="..\..\..\Resource\resource.h" />
+    <ClInclude Include="..\..\..\Step\ArcLength.h" />
+    <ClInclude Include="..\..\..\Step\Bead.h" />
+    <ClInclude Include="..\..\..\Step\Buckle.h" />
+    <ClInclude Include="..\..\..\Step\Dynamic.h" />
+    <ClInclude Include="..\..\..\Step\Frequency.h" />
+    <ClInclude Include="..\..\..\Step\Static.h" />
+    <ClInclude Include="..\..\..\Step\Step.h" />
+    <ClInclude Include="..\..\..\suanPan.h" />
+    <ClInclude Include="..\..\..\Toolbox\argumentParser.h" />
+    <ClInclude Include="..\..\..\Toolbox\arpack_wrapper.h" />
+    <ClInclude Include="..\..\..\Toolbox\commandParser.h" />
+    <ClInclude Include="..\..\..\Toolbox\debug.h" />
+    <ClInclude Include="..\..\..\Toolbox\IntegrationPlan.h" />
+    <ClInclude Include="..\..\..\Toolbox\PropertyType.h" />
+    <ClInclude Include="..\..\..\Toolbox\sort_rcm.h" />
+    <ClInclude Include="..\..\..\Toolbox\shapeFunction.h" />
+    <ClInclude Include="..\..\..\Toolbox\tensorToolbox.h" />
+    <ClInclude Include="..\..\..\Toolbox\utility.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\..\Resource\suanPan.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\Resource\suanPan.ico" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

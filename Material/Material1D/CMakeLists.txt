@@ -1,0 +1,26 @@
+set(M1D
+    Material1D/AFC.cpp
+    Material1D/AFCN.cpp
+    Material1D/Bilinear1D.cpp
+    Material1D/Concrete/ConcreteCM.cpp
+    Material1D/Concrete/ConcreteSimple.cpp
+    Material1D/Concrete/ConcreteTsai.cpp
+    Material1D/Elastic/BilinearElastic1D.cpp
+    Material1D/Elastic/Elastic1D.cpp
+    Material1D/Elastic/MultilinearElastic1D.cpp
+    Material1D/Flag.cpp
+    Material1D/Gap01.cpp
+    Material1D/Material1D.cpp
+    Material1D/Maxwell.cpp
+    Material1D/MPF.cpp
+    Material1D/RambergOsgood.cpp
+    Material1D/Viscosity01.cpp
+    Material1D/Viscosity02.cpp
+    Material1D/vonMises/BilinearMises1D.cpp
+    Material1D/vonMises/ExpMises1D.cpp
+    Material1D/vonMises/MultilinearMises1D.cpp
+    Material1D/vonMises/NonlinearMises1D.cpp
+    Material1D/Wrapper/Parallel.cpp
+    Material1D/Wrapper/Sequential.cpp
+    Material1D/Wrapper/Uniaxial.cpp
+	)

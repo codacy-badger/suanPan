@@ -1,0 +1,13 @@
+coverage:
+  range: 60..80
+  round: up
+  precision: 3
+ignore:
+  - "/Toolbox/amd-src"
+  - "/Toolbox/arpack-src"
+  - "/Toolbox/lapack-ext"
+  - "/Toolbox/superlu-src"
+  - "/Toolbox/mumps-src"
+  - "/Domain/MetaMat"
+  - "/Include"
+  - "/MSVC"

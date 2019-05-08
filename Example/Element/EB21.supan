@@ -1,0 +1,35 @@
+# A TEST MODEL FOR B21 ELEMENT
+
+node 1 0 0
+node 2 1 0
+node 3 2 0
+node 4 3 0
+
+material Elastic1D 1 10
+
+element EB21 1 1 2 12 1 1 1
+element EB21 2 3 4 12 1 1 1
+
+element Tie 3 2 2 3 2
+
+fix 1 P 1 4
+
+cload 1 0 10 2 2
+
+step static 1 1
+set ini_step_size .1
+set fixed_step_size true
+set symm_mat false
+
+converger AbsIncreDisp 1 1E-8 5 1
+
+analyze
+
+# -0.0270 0.3272 0.4865
+peek node 2 3
+
+peek element 1
+
+reset
+clear
+exit

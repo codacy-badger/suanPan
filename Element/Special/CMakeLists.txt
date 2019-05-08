@@ -1,0 +1,10 @@
+set(Special
+    Special/Damper01.cpp
+    Special/Damper02.cpp
+    Special/Mass.cpp
+    Special/SingleSection2D.cpp
+    Special/SingleSection3D.cpp
+    Special/Spring01.cpp
+    Special/Spring02.cpp
+    Special/Tie.cpp
+    )

@@ -1,0 +1,39 @@
+# A TEST MODEL FOR NEWMARK INTEGRATOR
+
+node 1 0 0
+node 2 0 1
+
+material Elastic1D 1 100 .1
+
+element EB21 1 1 2 10 1 1 0
+
+mass 2 2 10 1
+
+fix 1 P 1
+
+amplitude Tabular 1 EZ
+# amplitude Decay 1 10 20
+# amplitude Modulated 1 1 2 3 4 5
+# amplitude Sine 1 10 2
+
+acceleration 2 1 .2 1 2
+
+modifier LumpedScale 1 1
+modifier LumpedSimple 2 2
+modifier Rayleigh 3 .2 .002 0 0
+
+step dynamic 1 25
+set ini_step_size .05
+set fixed_step_size true
+
+integrator Newmark 1
+
+converger AbsIncreDisp 1 1E-4 4 0
+
+analyze
+
+peek node 2
+
+peek integrator 1
+
+exit
